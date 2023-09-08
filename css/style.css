@@ -51,6 +51,23 @@
   height: auto;
   color: black;
 }
+* body #max-container #start-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  min-width: 100vh;
+  min-height: 90vh;
+}
+* body #max-container #start-container #main-title, * body #max-container #start-container p {
+  font-size: 500%;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+}
+* body #max-container #start-container p {
+  font-size: 250%;
+}
 * body #max-container #boxcolor2 {
   position: relative;
   width: 50%;

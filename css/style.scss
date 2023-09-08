@@ -54,6 +54,21 @@
       width: 100%;
       height: auto;    
       color: black;
+      #start-container {
+        @include flexCenter();
+        flex-direction: column;
+        min-width: 100vh;
+        min-height: 90vh;
+        #main-title {
+          font-size: 500%;
+          color: white;
+          text-shadow: 2px 2px 5px black;
+        }
+        p {
+          @extend #main-title;
+          font-size: 250%;
+        }
+      }
       #boxcolor2 {
         position: relative;
         width: 50%;
