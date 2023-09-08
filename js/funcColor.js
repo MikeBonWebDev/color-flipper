@@ -157,9 +157,14 @@ function arrModeBehavior() {
 //End fn with code run in Array Mode (used in fetchHtmlContent())
 
 //Start fn with code run in Advanced Mode (used in fetchHtmlContent())
-function advModeBehavior() {
+function advModeBehavior() {  
   let inputColor = document.getElementById(`selcolmode`);
-  let colorMode = `hex`;        
+  let colorMode = `hex`;
+  
+  $(`#hide-show`).on(`click`, () => {
+    
+    return;
+  })
 
   inputColor.addEventListener(`change`, function(){            
       let value = this.value;
@@ -188,6 +193,24 @@ function advModeBehavior() {
     
 
     switch (targId) {
+        case `hide-show`:
+          let showHideId = document.getElementById(`hide-show`);
+          let classOfShow = showHideId.getAttribute(`class`);
+
+          if (classOfShow === `showing-set`){
+
+            alert(`Helloooooo`)
+            showHideId.classList.add(`hiding-set`);
+            showHideId.classList.remove(`showing-set`);
+
+          } else if(classOfShow === `hiding-set`) {
+
+            alert(`Buuuuuuuu`);
+            showHideId.classList.add(`showing-set`);
+            showHideId.classList.remove(`hiding-set`);
+
+          }
+        break;
         case `btt5`:
             e.preventDefault();                    
             
@@ -218,10 +241,12 @@ function fetchHtmlContent(fileToCall, contentFunction) {
       const arrData = data.htmlcontent;
       const contContainer = document.getElementById(`max-container`);
       contContainer.innerHTML = arrData;
-      
-      if (contentFunction) {
-        contentFunction();
-      }
+
+      document.addEventListener(`DOMContentLoaded`, function(){
+        if (contentFunction) {
+          contentFunction();
+        }
+      }) 
       
     })
     .catch(error => {
