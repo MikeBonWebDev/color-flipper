@@ -63,6 +63,7 @@ function fetchHtmlContent() {
     const arrData = data.htmlcontent;
     const contContainer = document.getElementById(`max-container`);
     contContainer.innerHTML = arrData;
+    
     let colors = [
       `#FF0055`, 
       `blue`, 
