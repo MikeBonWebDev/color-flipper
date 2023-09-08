@@ -9,7 +9,7 @@ $(function(){
 
         switch (targetId) {
             case `def-page`:
-                e.preventDefault();                
+                e.preventDefault();               
 
                 window.location.reload();
             break;
@@ -24,7 +24,12 @@ $(function(){
                 e.preventDefault();
 
                 changeTitle(targetId);
-
+                
+                $(`body`)
+                .css({
+                    background: `white`,
+                });               
+                
                 fetchHtmlContent(`js/advContent.json`, advModeBehavior);
             break;            
         }
