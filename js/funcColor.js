@@ -153,6 +153,7 @@ function advModeBehavior() {
     let valInp = document.getElementById(`radio3`).value;
     let linearVal = valInp.indexOf(`linear`);
     let radialVal = valInp.indexOf(`radial`);
+    let conicVal = valInp.indexOf(`conic`);
     
 
     switch (targId) {
@@ -165,7 +166,7 @@ function advModeBehavior() {
         case `instypedcolor`:
             e.preventDefault();           
 
-            if (!linearVal || !radialVal) {
+            if (!linearVal || !radialVal || !conicVal) {
                 colorElement.style.background = valInp;
             } else {
                 colorElement.style.backgroundColor = valInp;                
