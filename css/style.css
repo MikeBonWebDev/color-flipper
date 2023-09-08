@@ -17,6 +17,9 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  /*End styling for JSON content,
+  some content are setted with jQuery
+  (see funcColor.js)*/
 }
 * body .flip-box {
   padding: 5%;

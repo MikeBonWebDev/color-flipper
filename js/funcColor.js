@@ -1,20 +1,46 @@
 "use strict";
+//Start fn behavior for <title> tag
+function changeTitle(idTrg) {
+  let idTitle = idTrg;
+  let titleTag = document.getElementsByTagName(`title`)[0];
+
+  switch (idTitle) {    
+    case `arr-mode`:      
+      titleTag.textContent = `CF | Array`;
+    break;
+    case `adv-mode`:      
+      titleTag.textContent = `CF | Advanced`;
+    break;
+    default:
+      titleTag.textContent = `CF | Color Flipper`;
+    break;
+  }
+}
+//End fn behavior for <title> tag
+
+//Start fn changing `colors[]` index (used in fetch)
 function changeIndex(arr){
   let maxValue = arr.length - 1;        
   let i = Math.round(0 - 0.5 + Math.random() * (maxValue + 1));
   return i;            
 }
+//End fn changing `colors[]` index (used in fetch)
 
+//Start fn return the rgb numbers and Alpha
 function generateRGB(min, max) {    
   return min + Math.random() * (max - min);
 };
+//End fn return the rgb numbers and Alpha
 
+//Start fn return HEX values (used in generateStringColor())
 function returnHexValue(value) {
   let valHex = (value.toString(16)).padStart(2, `0`)
   let valHexUp = valHex.toUpperCase();
   return valHexUp;
 };
+//End fn return HEX values (used in generateStringColor())
 
+//Start Core fn Advanced Mode
 function generateStringColor(what) {
   let valR;
   let valG;
@@ -56,6 +82,9 @@ function generateStringColor(what) {
     break;
   }    
 }
+//End Core fn Advanced Mode
+
+//Start fn with code run in Array Mode (used in fetchHtmlContent())
 function arrModeBehavior() {
   let colors = [
     `#FF0055`, 
@@ -125,7 +154,9 @@ function arrModeBehavior() {
   //End Color change Vanilla JS
   */  
 }
+//End fn with code run in Array Mode (used in fetchHtmlContent())
 
+//Start fn with code run in Advanced Mode (used in fetchHtmlContent())
 function advModeBehavior() {
   let inputColor = document.getElementById(`selcolmode`);
   let colorMode = `hex`;        
@@ -177,20 +208,24 @@ function advModeBehavior() {
       }
   })
 }
+//End fn with code run in Advanced Mode (used in fetchHtmlContent())
+
+//Start fn to call .json elements
 function fetchHtmlContent(fileToCall, contentFunction) {
   fetch(fileToCall)
-  .then(response => response.json())
-  .then(data => {
-    const arrData = data.htmlcontent;
-    const contContainer = document.getElementById(`max-container`);
-    contContainer.innerHTML = arrData;
-    
-    if (contentFunction) {
-      contentFunction();
-    }
-    
-  })
-  .catch(error => {
-  console.error(`Errore nel caricamento del File`, error);
-  })
+    .then(response => response.json())
+    .then(data => {
+      const arrData = data.htmlcontent;
+      const contContainer = document.getElementById(`max-container`);
+      contContainer.innerHTML = arrData;
+      
+      if (contentFunction) {
+        contentFunction();
+      }
+      
+    })
+    .catch(error => {
+    console.error(`Errore nel caricamento del File`, error);
+    })
 }
+//End fn to call .json elements
