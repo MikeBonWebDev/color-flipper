@@ -1,149 +1,63 @@
 "use strict";
 $(function(){
-       
-        let colors = [
-            `#FF0055`, 
-            `blue`, 
-            `purple`,
-            `yellow`,
-            `brown`,
-            `black`    
-        ];
-        
 
-        
-        
+    //Function return casual number for RGB Color      
+    let inputColor = document.getElementById(`selcolmode`);
+    let colorMode = `hex`;        
 
-        //Function return casual number for RGB Color
-        let buttonChangeColor = document.getElementById(`btt5`);       
-        let inputColor = document.getElementById(`selcolmode`);
-        let mode = document.getElementById(`max-container`);
-        
-        let colorMode = `hex`;        
+    inputColor.addEventListener(`change`, function(){            
+        let value = this.value;
 
-        inputColor.addEventListener(`change`, function(e){
-            let target = e.target;
-            let value = target.value;
+        if (value === `hex`) {
+            colorMode = value;
+        } else if (value === `rgba`) {
+            colorMode = value;
+        } else if (value === `rgb`) {
+            colorMode = value;
+        }
+        return colorMode;
 
-            if (value === `hex`) {
-                colorMode = value;
-            } else if (value === `rgba`) {
-                colorMode = value;
-            }
-            return colorMode;
+    }, false);    
 
-        }, false);
-
+    document.addEventListener(`click`, function(e){
+        let target = e.target;
+        let targId = target.getAttribute(`id`);
+        let colorActual = document.getElementById(`actual-color`);
         let colorElement = document.getElementById(`boxcolor2`);
-        let colorActual = document.getElementById(`actual-color`);   
+        let actualColor = generateStringColor(colorMode);
+        let valInp = document.getElementById(`radio3`).value;
+        let linearVal = valInp.indexOf(`linear`);
+        let radialVal = valInp.indexOf(`radial`);
+        
 
-        buttonChangeColor.addEventListener(`click`, function(e) {
-            e.preventDefault();    
-
-            let actualColor = generateStringColor(colorMode);
-            
-            colorActual.textContent = `Color: ${actualColor}`;
-            colorElement.style.backgroundColor = actualColor;
-            
-        });
-
-        let applyCol = document.getElementById(`instypedcolor`);
-
-        applyCol.addEventListener(`click`, function(e){
-            e.preventDefault();
-
-            let valInp = document.getElementById(`radio3`).value;
-            let linearVal = valInp.indexOf(`linear`);
-            let radialVal = valInp.indexOf(`radial`);
-
-            if (!linearVal || !radialVal) {
-                colorElement.style.background = valInp;
-            } else {
-                colorElement.style.backgroundColor = valInp;                
-            }
-
-            colorActual.textContent = `Color: ${valInp}`;
-        })
-
-        let modArr = document.getElementById(`arr-mode`);
-
-        modArr.addEventListener(`click`, function(e){
-            e.preventDefault();
-
-            fetch(`js/arrContent.json`)
-            .then(response => response.json())
-            .then(data => {
-            const arrData = data.htmlcontent;
-            const contContainer = document.getElementById(`max-container`);
-            contContainer.innerHTML = arrData;
-
-            $(`#max-container`)
-            .css({
-                "display": "flex",
-                "align-items": "center",
-                "justify-content": "center",
-            })
-            //Start Color Change jQuery library
-            $("#changebtt").on(`click`, function(){
-                let j = changeIndex();
-
-                $(`#flip-box`)                
-                    .css({
-                    "background-color" : colors[j]
-                    })               
+        switch (targId) {
+            case `btt5`:
+                e.preventDefault();                    
                 
-                if(colors[j].valueOf() === `black` || colors[j].valueOf() === `brown`){
-                    $(`#currentcolor`).css({
-                        "color": "white"
-                    });
-                    $(`#flip-box`).css({
-                        "border": "5px solid white"
-                    });
+                colorActual.textContent = `Color: ${actualColor}`;
+                colorElement.style.backgroundColor = actualColor;
+            break;
+            case `instypedcolor`:
+                e.preventDefault();           
+
+                if (!linearVal || !radialVal) {
+                    colorElement.style.background = valInp;
                 } else {
-                    $(`#currentcolor`).css({
-                        "color": "black"
-                    });
-                    $(`#flip-box`).css({
-                        "border": "5px solid black"
-                    });
-                    
+                    colorElement.style.backgroundColor = valInp;                
                 }
-                $(`#currentcolor`)
-                    .text(`Colore: ` + colors[j])
-                    .fadeIn(700);
-            })
-            //End Color Change jQuery library
 
-            /*
-            //Start Color change Vanilla JS
-            let buttonChange = document.getElementById(`changebtt`);
+                colorActual.textContent = `Color: ${valInp}`;
+            break;
+            case `arr-mode`:
+                e.preventDefault();
 
-            buttonChange.addEventListener("click", function(){
-                let j = changeIndex();
-                let arColors = colors[j];
-                let boxColor = document.getElementById(`flip-box`);
-                let actualColor = document.getElementById(`currentcolor`);
+                fetchHtmlContent();
+            break;
+            case `def-page`:
+                e.preventDefault();
 
-                if(arColors === `black` || arColors === `brown`){
-                    actualColor.style.color = "white";
-                } else {
-                    actualColor.style.color = "black";
-                }
-                
-                actualColor.textContent = `Colore: ` + arColors;
-                boxColor.style.backgroundColor = arColors;
-            })
-            //End Color change Vanilla JS
-            */        
-            })
-            .catch(error => {
-            console.error(`Errore nel caricamento del File`, error);
-            })
-        })
-
-        $(`#def-page`).on(`click`, function(e){
-            e.preventDefault();
-
-            window.location.reload()
-        })
+                window.location.reload();
+            break;
+        }
+    })        
 })
