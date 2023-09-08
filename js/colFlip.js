@@ -23,12 +23,7 @@ $(function(){
             case `adv-mode`:
                 e.preventDefault();
 
-                changeTitle(targetId);
-                
-                $(`body`)
-                .css({
-                    background: `white`,
-                });               
+                changeTitle(targetId);                              
                 
                 fetchHtmlContent(`js/advContent.json`, advModeBehavior);
             break;            

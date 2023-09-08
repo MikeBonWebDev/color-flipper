@@ -157,14 +157,14 @@ function arrModeBehavior() {
 //End fn with code run in Array Mode (used in fetchHtmlContent())
 
 //Start fn with code run in Advanced Mode (used in fetchHtmlContent())
-function advModeBehavior() {  
+function advModeBehavior() {
+  $(`body`)
+    .css({
+        background: `white`,
+    });
+
   let inputColor = document.getElementById(`selcolmode`);
-  let colorMode = `hex`;
-  
-  $(`#hide-show`).on(`click`, () => {
-    
-    return;
-  })
+  let colorMode = `hex`; 
 
   inputColor.addEventListener(`change`, function(){            
       let value = this.value;
@@ -183,31 +183,30 @@ function advModeBehavior() {
   document.addEventListener(`click`, function(e){
     let target = e.target;
     let targId = target.getAttribute(`id`);
+    let tarGetId = document.getElementById(targId);
+    let tarClass = tarGetId.getAttribute(`class`);
     let colorActual = document.getElementById(`actual-color`);
     let colorElement = document.getElementById(`boxcolor2`);
     let actualColor = generateStringColor(colorMode);
     let valInp = document.getElementById(`radio3`).value;
     let linearVal = valInp.indexOf(`linear`);
     let radialVal = valInp.indexOf(`radial`);
-    let conicVal = valInp.indexOf(`conic`);
-    
+    let conicVal = valInp.indexOf(`conic`);   
 
     switch (targId) {
-        case `hide-show`:
-          let showHideId = document.getElementById(`hide-show`);
-          let classOfShow = showHideId.getAttribute(`class`);
+        case `hide-show`:          
 
-          if (classOfShow === `showing-set`){
+          if (tarGetId.hasAttribute(`class`, `showing`)){
 
             alert(`Helloooooo`)
-            showHideId.classList.add(`hiding-set`);
-            showHideId.classList.remove(`showing-set`);
+            tarGetId.classList.add(`hiding`);
+            tarGetId.classList.remove(`showing`);
 
-          } else if(classOfShow === `hiding-set`) {
+          } else if(tarClass === `hiding-set`) {
 
             alert(`Buuuuuuuu`);
-            showHideId.classList.add(`showing-set`);
-            showHideId.classList.remove(`hiding-set`);
+            tarGetId.classList.add(`showing-set`);
+            tarGetId.classList.remove(`hiding-set`);
 
           }
         break;
@@ -242,11 +241,9 @@ function fetchHtmlContent(fileToCall, contentFunction) {
       const contContainer = document.getElementById(`max-container`);
       contContainer.innerHTML = arrData;
 
-      document.addEventListener(`DOMContentLoaded`, function(){
-        if (contentFunction) {
-          contentFunction();
-        }
-      }) 
+      if (contentFunction) {
+        contentFunction();
+      }
       
     })
     .catch(error => {
