@@ -8,5 +8,5 @@ Hi! This is a very simple web app allow you to change color in two mode:
 In half-bottom square, you can write your own color in a different way like: rgb, rgba, hex, linear, radial... Then, clicking on "Apply" and the color will appear on the background.
 
 
-N.B. This app is not fully responsive, cause in this period I'm focused on JavaScript, also if I'll integrate most knowledge about in future.
+N.B. This app is not fully responsive, cause I'm focused on JS. This a work in progress anyway. I implementing it in future!
 
