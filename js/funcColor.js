@@ -127,7 +127,7 @@ function arrModeBehavior() {
           
       }
       $(`#currentcolor`)
-          .text(`Colore: ` + colors[j])
+          .text(`Color: ` + colors[j])
           .fadeIn(700);
   })
   //End Color Change jQuery library
@@ -200,12 +200,12 @@ function advModeBehavior() {
             $(`#selection1`)
             .fadeOut(700);
             tarGetId.className = `changebtt hiding`;
-            tarGetId.textContent =`Mostra Opzioni`;         
+            tarGetId.textContent =`Show`;         
           } else if (tarGetId.className === `changebtt hiding`){
             $(`#selection1`)
             .fadeIn(700);
             tarGetId.className = `changebtt showing`;
-            tarGetId.textContent =`Nascondi Opzioni`;
+            tarGetId.textContent =`Hide`;
           }
 
         break;
@@ -246,7 +246,7 @@ function fetchHtmlContent(fileToCall, contentFunction) {
       
     })
     .catch(error => {
-    console.error(`Errore nel caricamento del File`, error);
+    console.error(`Error loading file`, error);
     })
 }
 //End fn to call .json elements
