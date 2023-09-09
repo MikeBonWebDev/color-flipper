@@ -194,21 +194,20 @@ function advModeBehavior() {
     let conicVal = valInp.indexOf(`conic`);   
 
     switch (targId) {
-        case `hide-show`:          
+        case `hide-show`: 
 
-          if (tarGetId.hasAttribute(`class`, `showing`)){
-
-            alert(`Helloooooo`)
-            tarGetId.classList.add(`hiding`);
-            tarGetId.classList.remove(`showing`);
-
-          } else if(tarClass === `hiding-set`) {
-
-            alert(`Buuuuuuuu`);
-            tarGetId.classList.add(`showing-set`);
-            tarGetId.classList.remove(`hiding-set`);
-
+          if (tarGetId.className === `changebtt showing`) {
+            $(`#selection1`)
+            .fadeOut(700);
+            tarGetId.className = `changebtt hiding`;
+            tarGetId.textContent =`Mostra Opzioni`;         
+          } else if (tarGetId.className === `changebtt hiding`){
+            $(`#selection1`)
+            .fadeIn(700);
+            tarGetId.className = `changebtt showing`;
+            tarGetId.textContent =`Nascondi Opzioni`;
           }
+
         break;
         case `btt5`:
             e.preventDefault();                    
