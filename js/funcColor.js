@@ -183,15 +183,12 @@ function advModeBehavior() {
   document.addEventListener(`click`, function(e){
     let target = e.target;
     let targId = target.getAttribute(`id`);
-    let tarGetId = document.getElementById(targId);
-    let tarClass = tarGetId.getAttribute(`class`);
+    let tarGetId = document.getElementById(targId);    
     let colorActual = document.getElementById(`actual-color`);
     let colorElement = document.getElementById(`boxcolor2`);
     let actualColor = generateStringColor(colorMode);
     let valInp = document.getElementById(`radio3`).value;
-    let linearVal = valInp.indexOf(`linear`);
-    let radialVal = valInp.indexOf(`radial`);
-    let conicVal = valInp.indexOf(`conic`);   
+      
 
     switch (targId) {
         case `hide-show`: 
@@ -210,20 +207,16 @@ function advModeBehavior() {
 
         break;
         case `btt5`:
-            e.preventDefault();                    
+            e.preventDefault();
             
+            colorElement.style.background = actualColor;            
             colorActual.textContent = `Color: ${actualColor}`;
-            colorElement.style.backgroundColor = actualColor;
+            
         break;
         case `instypedcolor`:
-            e.preventDefault();           
-
-            if (!linearVal || !radialVal || !conicVal) {
-                colorElement.style.background = valInp;
-            } else {
-                colorElement.style.backgroundColor = valInp;                
-            }
-
+            e.preventDefault();
+            
+            colorElement.style.background = valInp;
             colorActual.textContent = `Color: ${valInp}`;
         break;
       }
