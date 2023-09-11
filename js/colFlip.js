@@ -1,5 +1,19 @@
 "use strict";
 $(function(){
+    //Start responsive set
+    let width = screen.width;
+
+    if (width < 400) {
+        $(`#main-title`)
+            .css({
+                fontSize: `125%`,
+            });
+        $(`#main-paragraph`)
+            .css({
+                fontSize: `62.5%`
+            })
+    }
+    //End responsive set
     //Start Main leading Event Listener 
     document.addEventListener(`click`, function(e){
         e.preventDefault();

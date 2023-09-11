@@ -86,7 +86,8 @@ function generateStringColor(what) {
 
 //Start fn with code run in Array Mode (used in fetchHtmlContent())
 function arrModeBehavior() {
-  
+
+  //Start responsive set
   let width = screen.width;
 
   if (width < 400) {
@@ -99,6 +100,8 @@ function arrModeBehavior() {
     $(`#changebtt`)
       .text(`SW`);
   }
+  //End responsive set
+
   $(`body`)
     .css({
         background: `white`,
@@ -175,6 +178,18 @@ function arrModeBehavior() {
 
 //Start fn with code run in Advanced Mode (used in fetchHtmlContent())
 function advModeBehavior() {
+  //Start responsive set
+  let width = screen.width;
+
+  if (width < 400) {
+    $(`#boxcolor2`)
+      .css({
+        width: `75%`,
+      });
+    $(`#hide-show`)
+      .text(`HS`)
+  }
+  //End responsive set
   $(`body`)
     .css({
         background: `white`,
@@ -208,7 +223,7 @@ function advModeBehavior() {
       
 
     switch (targId) {
-        case `hide-show`: 
+        case `hide-show`:          
 
           if (tarGetId.className === `changebtt showing`) {
             $(`#selection1`)
