@@ -86,6 +86,23 @@ function generateStringColor(what) {
 
 //Start fn with code run in Array Mode (used in fetchHtmlContent())
 function arrModeBehavior() {
+  
+  let width = screen.width;
+
+  if (width < 400) {
+    $(`#flip-box`)
+      .css({
+        width: `75%`,
+      });
+  }
+  if (width < 300) {
+    $(`#changebtt`)
+      .text(`SW`);
+  }
+  $(`body`)
+    .css({
+        background: `white`,
+    });
   let colors = [
     `#FF0055`, 
     `blue`, 
