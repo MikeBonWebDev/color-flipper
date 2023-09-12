@@ -185,7 +185,7 @@ function advModeBehavior() {
     $(`#boxcolor2`)
       .css({
         width: `90%`,
-        height: `auto`,
+        height: `70vh`,
       });
     $(`#hide-show`)
       .text(`HS`)
