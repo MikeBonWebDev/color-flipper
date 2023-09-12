@@ -51,31 +51,40 @@ function generateStringColor(what) {
 
   valR = Math.floor(generateRGB(0, 255));
   valG = Math.floor(generateRGB(0, 255));
-  valB = Math.floor(generateRGB(0, 255));    
+  valB = Math.floor(generateRGB(0, 255));
+  valAlpha = generateRGB(0, 1).toFixed(1);
+  
+  if (valR + valG + valB < 300) {
+    $(`#boxcolor2`)
+      .css({
+        color: `white`,
+        border: `white`,
+      })
+  } else {
+    $(`#boxcolor2`)
+      .css({
+        color: `black`,
+        border: `black`,
+      })
+  }
 
   switch(what) {
 
-    case "rgb":
+    case `rgb`:
 
     stringColor = `rgb(${valR}, ${valG}, ${valB})`;
     return stringColor;
 
-    case "rgba":
-
-        valAlpha = generateRGB(0, 1).toFixed(1);
+    case `rgba`:       
 
         stringColor = `rgba(${valR}, ${valG}, ${valB}, ${valAlpha})`;
         return stringColor;
 
     break;
 
-    case "hex":
+    case `hex`:
 
-        hexColor = `#${returnHexValue(valR) + returnHexValue(valG) + returnHexValue(valB)}`;
-
-        if (isFinite(valAlpha)) {
-        hexColor += `, Alpha: ${valAlpha}`;
-        }
+        hexColor = `#${returnHexValue(valR) + returnHexValue(valG) + returnHexValue(valB)}`;        
 
         return hexColor;
 
@@ -108,6 +117,7 @@ function arrModeBehavior() {
     .css({
         background: `white`,
     });
+
   let colors = [
     `#FF0055`, 
     `blue`, 
@@ -116,13 +126,7 @@ function arrModeBehavior() {
     `brown`,
     `black`    
   ];
-
-  $(`#max-container`)
-  .css({
-      "display": "flex",
-      "align-items": "center",
-      "justify-content": "center",
-  })
+ 
   //Start Color Change jQuery library
   $("#switch-arr").on(`click`, function(){
       let j = changeIndex(colors);
@@ -227,9 +231,7 @@ function advModeBehavior() {
     let targId = target.getAttribute(`id`);
     let tarGetId = document.getElementById(targId);    
     let colorActual = document.getElementById(`actual-color`);
-    let colorElement = document.getElementById(`boxcolor2`);
-    let actualColor = generateStringColor(colorMode);
-    let valInp = document.getElementById(`radio3`).value;
+    let colorElement = document.getElementById(`boxcolor2`);    
       
 
     switch (targId) {
@@ -243,8 +245,10 @@ function advModeBehavior() {
               tarGetId.textContent =`S`;
             } else {
               tarGetId.textContent =`Show`;
-            }        
+            }
+
           } else if (tarGetId.className === `changebtt hiding`){
+
             $(`#selection1`)
             .fadeIn(700);
             tarGetId.className = `changebtt showing`;
@@ -252,12 +256,14 @@ function advModeBehavior() {
               tarGetId.textContent =`H`;
             } else {
               tarGetId.textContent =`Hide`;
-            }        
+            }
+
           }
 
         break;
         case `btt5`:
             e.preventDefault();
+            let actualColor = generateStringColor(colorMode);
             
             colorElement.style.background = actualColor;            
             colorActual.textContent = `Color: ${actualColor}`;
@@ -265,6 +271,7 @@ function advModeBehavior() {
         break;
         case `instypedcolor`:
             e.preventDefault();
+            let valInp = document.getElementById(`radio3`).value;
             
             colorElement.style.background = valInp;
             colorActual.textContent = `Color: ${valInp}`;
