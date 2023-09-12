@@ -91,13 +91,16 @@ function arrModeBehavior() {
   let width = screen.width;
 
   if (width < 400) {
-    $(`#flip-box`)
+    $(`#arr-box`)
       .css({
         width: `75%`,
+        height: `25vh`,
       });
+      $(`#switch-arr`)
+      .text(`SW`);
   }
   if (width < 300) {
-    $(`#changebtt`)
+    $(`#switch-arr`)
       .text(`SW`);
   }
   //End responsive set
@@ -122,10 +125,10 @@ function arrModeBehavior() {
       "justify-content": "center",
   })
   //Start Color Change jQuery library
-  $("#changebtt").on(`click`, function(){
+  $("#switch-arr").on(`click`, function(){
       let j = changeIndex(colors);
 
-      $(`#flip-box`)                
+      $(`#arr-box`)                
           .css({
           "background-color" : colors[j]
           })               
@@ -134,14 +137,14 @@ function arrModeBehavior() {
           $(`#currentcolor`).css({
               "color": "white"
           });
-          $(`#flip-box`).css({
+          $(`#arr-box`).css({
               "border": "5px solid white"
           });
       } else {
           $(`#currentcolor`).css({
               "color": "black"
           });
-          $(`#flip-box`).css({
+          $(`#arr-box`).css({
               "border": "5px solid black"
           });
           
