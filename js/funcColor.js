@@ -190,6 +190,7 @@ function advModeBehavior() {
       .text(`HS`)
   }
   //End responsive set
+
   $(`body`)
     .css({
         background: `white`,
@@ -229,12 +230,20 @@ function advModeBehavior() {
             $(`#selection1`)
             .fadeOut(700);
             tarGetId.className = `changebtt hiding`;
-            tarGetId.textContent =`Show`;         
+            if (width < 400) {
+              tarGetId.textContent =`S`;
+            } else {
+              tarGetId.textContent =`Show`;
+            }        
           } else if (tarGetId.className === `changebtt hiding`){
             $(`#selection1`)
             .fadeIn(700);
             tarGetId.className = `changebtt showing`;
-            tarGetId.textContent =`Hide`;
+            if (width < 400) {
+              tarGetId.textContent =`H`;
+            } else {
+              tarGetId.textContent =`Hide`;
+            }        
           }
 
         break;

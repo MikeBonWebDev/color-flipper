@@ -14,6 +14,7 @@ $(function(){
             })
     }
     //End responsive set
+    
     //Start Main leading Event Listener 
     document.addEventListener(`click`, function(e){
         e.preventDefault();
