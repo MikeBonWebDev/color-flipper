@@ -92,9 +92,8 @@ function arrModeBehavior() {
 
   if (width < 400) {
     $(`#arr-box`)
-      .css({
-        width: `75%`,
-        height: `25vh`,
+      .css({        
+        width: `80%`,
       });
       $(`#switch-arr`)
       .text(`SW`);

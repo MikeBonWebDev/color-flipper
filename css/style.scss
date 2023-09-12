@@ -57,7 +57,8 @@
     #max-container {
       @include flexCenter();
       width: 100%;
-      height: auto;    
+      height: auto;
+      min-height: 80vh;    
       color: black;
       #start-container {
         @include flexCenter();
@@ -105,10 +106,8 @@
         }    
       }   
       #arr-box {
-        position: absolute;
-        top: 30%;
-        width: 40%;    
-        margin: 0px;
+        position: relative;
+        width: 40%;
       }
     }
     /*End styling for JSON content,

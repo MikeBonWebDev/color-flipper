@@ -52,6 +52,7 @@
   text-align: center;
   width: 100%;
   height: auto;
+  min-height: 80vh;
   color: black;
 }
 * body #max-container #start-container {
@@ -100,10 +101,8 @@
   margin-left: 37.5%;
 }
 * body #max-container #arr-box {
-  position: absolute;
-  top: 30%;
+  position: relative;
   width: 40%;
-  margin: 0px;
 }
 
 /*# sourceMappingURL=style.css.map */
