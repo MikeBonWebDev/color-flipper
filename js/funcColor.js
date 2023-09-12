@@ -75,10 +75,16 @@ function generateStringColor(what) {
     stringColor = `rgb(${valR}, ${valG}, ${valB})`;
     return stringColor;
 
-    case `rgba`:       
-
-        stringColor = `rgba(${valR}, ${valG}, ${valB}, ${valAlpha})`;
-        return stringColor;
+    case `rgba`:
+      if (valAlpha < 0.5) {
+        $(`#boxcolor2`)
+        .css({
+          color: `black`,
+          border: `black`,
+        })
+      }
+      stringColor = `rgba(${valR}, ${valG}, ${valB}, ${valAlpha})`;
+      return stringColor;
 
     break;
 
