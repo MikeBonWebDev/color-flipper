@@ -184,12 +184,12 @@ function advModeBehavior() {
   if (width < 400) {
     $(`#boxcolor2`)
       .css({
-        width: `75%`,
+        width: `90%`,
       });
     $(`#hide-show`)
       .text(`HS`)
     $(`#instypedcolor`)
-      .text(`A`)
+      .val(`OK`)
   }
   //End responsive set
 
