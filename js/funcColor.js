@@ -188,6 +188,8 @@ function advModeBehavior() {
       });
     $(`#hide-show`)
       .text(`HS`)
+    $(`#instypedcolor`)
+      .text(`A`)
   }
   //End responsive set
 
