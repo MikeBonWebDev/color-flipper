@@ -5,6 +5,7 @@
 * {
   box-sizing: border-box;
   font-family: "Suez One", serif;
+  overflow: hidden;
 }
 * body {
   min-width: 100vw;
@@ -44,7 +45,6 @@
 }
 * body #main-nav {
   box-shadow: 2px 0px 5px 5px black;
-  background: transparent;
 }
 * body #max-container {
   display: flex;

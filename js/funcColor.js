@@ -203,9 +203,9 @@ function advModeBehavior() {
       .text(`HS`)
     $(`#instypedcolor`)
       .val(`OK`)
-    $(`body`)
+    $(`#main-container`)
       .css({
-        overflow: `scroll`,
+        overflow: `auto`,
       })
   }
   //End responsive set
