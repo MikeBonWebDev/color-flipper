@@ -6,11 +6,19 @@ $(function(){
     if (width < 400) {
         $(`#main-title`)
             .css({
-                fontSize: `125%`,
+                fontSize: `175%`,
             });
         $(`#main-paragraph`)
             .css({
-                fontSize: `62.5%`
+                fontSize: `112.5%`
+            })
+        $(`#arr-button`)            
+            .css({
+                width: `20%`,                
+            })
+        $(`#adv-button`)            
+            .css({
+                width: `25%`,                
             })
     }
     //End responsive set
@@ -35,7 +43,21 @@ $(function(){
 
                 fetchHtmlContent(`js/arrContent.json`, arrModeBehavior);
             break;
+            case `arr-button`:
+                e.preventDefault();
+
+                changeTitle(targetId);
+
+                fetchHtmlContent(`js/arrContent.json`, arrModeBehavior);
+            break;
             case `adv-mode`:
+                e.preventDefault();
+
+                changeTitle(targetId);                              
+                
+                fetchHtmlContent(`js/advContent.json`, advModeBehavior);
+            break;            
+            case `adv-button`:
                 e.preventDefault();
 
                 changeTitle(targetId);                              
