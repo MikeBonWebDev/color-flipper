@@ -1,5 +1,9 @@
 "use strict";
 $(function(){
+    $(`body`)
+        .css({
+            overflow: `hidden`,
+        })
     //Start responsive set
     let width = screen.width;
 
