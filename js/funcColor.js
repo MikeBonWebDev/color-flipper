@@ -276,11 +276,28 @@ function advModeBehavior() {
             
         break;
         case `instypedcolor`:
-            e.preventDefault();
-            let valInp = document.getElementById(`radio3`).value;
-            
-            colorElement.style.background = valInp;
-            colorActual.textContent = `Color: ${valInp}`;
+          e.preventDefault();
+          let valInp = document.getElementById(`radio3`).value;
+
+          // Utilizza tinycolor per analizzare il valore del colore
+          const color = tinycolor(valInp);
+
+          // Verifica se il colore è valido
+          if (color.isValid()) {
+              colorElement.style.background = color.toString();
+
+              // Verifica se il colore di sfondo è scuro o chiaro
+              if (color.isDark()) {
+                  colorElement.style.color = "white"; // Imposta il testo su bianco
+              } else {
+                  colorElement.style.color = "black"; // Imposta il testo su nero
+              }
+
+              colorActual.textContent = `Color: ${color.toString()}`;
+          } else {
+              // Il valore del colore non è valido, puoi gestire l'errore qui
+              console.error("Colore non valido");
+          }
         break;
       }
   })
