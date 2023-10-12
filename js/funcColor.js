@@ -319,7 +319,7 @@ function fetchHtmlContent(fileToCall, contentFunction) {
       
     })
     .catch(error => {
-    console.error(`Error loading file`, error);
+      console.error(`Error loading file`, error);
     })
 }
 //End fn to call .json elements
